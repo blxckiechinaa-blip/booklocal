@@ -815,7 +815,8 @@
   }
 
 
-  function confirmBooking() {
+ async function confirmBooking() {
+
 
     const service =
       document.getElementById("service").value;
@@ -861,16 +862,23 @@
     };
 
 
-    let bookings =
-      JSON.parse(localStorage.getItem("booklocalBookings")) || [];
+  const { data, error } = await supabase
+  .from("bookings")
+  .insert([{
+    business: booking.business,
+    service: booking.service,
+    date: booking.date,
+    time: booking.time,
+    customer_name: booking.customer,
+    customer_phone: booking.phone
+  }]);
 
+if (error) {
+  console.error(error);
+  alert("We couldn't save your booking. Please try again.");
+  return;
+}
 
-    bookings.push(booking);
-
-
-    localStorage.setItem(
-      "booklocalBookings",
-      JSON.stringify(bookings)
     );
 
 
@@ -965,6 +973,13 @@
       }
 
     });
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+const SUPABASE_URL = "https://mwoapnobwiehkfomuxsv.supabase.co/rest/v1/ ";
+const SUPABASE_KEY = "sb_publishable_76afbyVYo6R36CgZsiREYg_3RwPIOIm";
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 </script>
 
