@@ -3,9 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="BookLocal - Find local barbers, salons and beauty professionals and book your appointment online.">
-
   <title>BookLocal — Find it. Book it. Done.</title>
 
   <style>
@@ -16,16 +13,90 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, sans-serif;
       background: #0b0b0b;
-      color: #fff;
-      line-height: 1.5;
+      color: white;
     }
 
-    button,
-    input,
-    select {
-      font-family: inherit;
+    header {
+      padding: 22px;
+      border-bottom: 1px solid #222;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #d4af37;
+    }
+
+    .owner {
+      color: #d4af37;
+      border: 1px solid #d4af37;
+      padding: 9px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 75px 20px 50px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 70px);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .gold {
+      color: #d4af37;
+    }
+
+    .hero p {
+      color: #aaa;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+    }
+
+    .search {
+      max-width: 650px;
+      margin: auto;
+      display: flex;
+      gap: 8px;
+    }
+
+    .search input {
+      flex: 1;
+      padding: 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .search button,
+    .book {
+      background: #d4af37;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 14px 20px;
     }
 
     .container {
@@ -34,154 +105,58 @@
       margin: auto;
     }
 
-    header {
-      padding: 22px 0;
-      border-bottom: 1px solid #222;
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: #d4af37;
-    }
-
-    .owner-btn {
-      border: 1px solid #d4af37;
-      color: #d4af37;
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 75px 0 50px;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 8vw, 72px);
-      line-height: 1;
-      letter-spacing: -3px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      color: #d4af37;
-    }
-
-    .hero p {
-      color: #aaa;
-      font-size: 18px;
-      max-width: 600px;
-      margin: 0 auto 32px;
-    }
-
-    .search {
-      max-width: 650px;
-      margin: auto;
-      display: flex;
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      padding: 6px;
-    }
-
-    .search input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 15px;
-      font-size: 16px;
-    }
-
-    .search button {
-      background: #d4af37;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      padding: 0 24px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
     section {
-      padding: 45px 0;
+      padding: 40px 0;
     }
 
-    .section-title {
-      font-size: 28px;
+    h2 {
       margin-bottom: 25px;
     }
 
-    .categories {
+    .categories,
+    .businesses {
       display: grid;
+      gap: 18px;
+    }
+
+    .categories {
       grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-
-    .category {
-      background: #151515;
-      border: 1px solid #252525;
-      padding: 25px 15px;
-      border-radius: 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .category:hover {
-      border-color: #d4af37;
-      transform: translateY(-2px);
-    }
-
-    .category-icon {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-
-    .category p {
-      color: #ddd;
-      font-weight: bold;
     }
 
     .businesses {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
     }
 
+    .category,
     .business {
       background: #151515;
-      border: 1px solid #252525;
-      border-radius: 14px;
+      border: 1px solid #292929;
+      border-radius: 12px;
       padding: 22px;
     }
 
-    .business h3 {
-      margin-bottom: 6px;
-      font-size: 21px;
+    .category {
+      text-align: center;
+    }
+
+    .category:hover,
+    .business:hover {
+      border-color: #d4af37;
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-bottom: 8px;
     }
 
     .location {
-      color: #999;
-      font-size: 14px;
-      margin-bottom: 14px;
+      color: #888;
+      margin: 7px 0;
     }
 
     .rating {
       color: #d4af37;
-      margin-bottom: 18px;
+      margin: 10px 0;
     }
 
     .service {
@@ -192,147 +167,100 @@
       color: #ccc;
     }
 
-    .price {
-      color: #fff;
-      font-weight: bold;
-    }
-
-    .book-btn {
-      display: block;
+    .book {
       width: 100%;
-      margin-top: 18px;
-      padding: 13px;
-      border: none;
-      border-radius: 8px;
-      background: #d4af37;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
+      margin-top: 15px;
     }
 
     .business-section {
-      background: #111;
-      border-top: 1px solid #222;
-      border-bottom: 1px solid #222;
       text-align: center;
+      background: #111;
+      margin-top: 30px;
     }
 
     .business-section p {
       color: #aaa;
-      max-width: 550px;
-      margin: 10px auto 25px;
+      margin-bottom: 20px;
     }
 
-    .business-link {
-      display: inline-block;
-      background: #d4af37;
-      color: #000;
-      padding: 13px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    /* BOOKING WINDOW */
 
-    footer {
-      padding: 30px 0;
-      text-align: center;
-      color: #777;
-      font-size: 14px;
-    }
-
-    /* BOOKING MODAL */
-
-    .modal {
+    #bookingModal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.82);
-      z-index: 1000;
+      background: rgba(0,0,0,.85);
+      z-index: 999;
       padding: 20px;
       overflow-y: auto;
     }
 
-    .modal.show {
+    #bookingModal.show {
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
     }
 
-    .modal-box {
-      width: 100%;
-      max-width: 520px;
+    .modal {
       background: #151515;
       border: 1px solid #333;
-      border-radius: 16px;
-      padding: 28px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 500px;
+      padding: 25px;
       position: relative;
     }
 
     .close {
       position: absolute;
-      top: 15px;
       right: 18px;
-      background: transparent;
-      color: #aaa;
+      top: 12px;
+      background: none;
       border: none;
+      color: #aaa;
       font-size: 28px;
-      cursor: pointer;
     }
 
-    .modal-box h2 {
-      margin-bottom: 6px;
-      padding-right: 30px;
-    }
-
-    .modal-business {
+    .selected {
       color: #d4af37;
-      margin-bottom: 22px;
+      margin: 8px 0 25px;
     }
 
-    .form-group {
-      margin-bottom: 17px;
-    }
-
-    .form-group label {
+    label {
       display: block;
-      margin-bottom: 7px;
       color: #ccc;
+      margin-bottom: 6px;
       font-size: 14px;
     }
 
-    .form-group input,
-    .form-group select {
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field input,
+    .field select {
       width: 100%;
       padding: 13px;
-      background: #0b0b0b;
-      border: 1px solid #333;
       border-radius: 8px;
-      color: #fff;
-      outline: none;
+      border: 1px solid #333;
+      background: #0b0b0b;
+      color: white;
     }
 
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: #d4af37;
-    }
-
-    .confirm-btn {
+    .confirm {
       width: 100%;
-      padding: 15px;
       background: #d4af37;
       color: #000;
       border: none;
       border-radius: 8px;
+      padding: 15px;
       font-weight: bold;
       font-size: 16px;
-      cursor: pointer;
-      margin-top: 5px;
     }
 
-    .success {
+    #success {
       display: none;
       text-align: center;
-      padding: 20px 0;
     }
 
     .success-icon {
@@ -344,33 +272,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
+      margin: 0 auto 18px;
       font-size: 30px;
-      font-weight: bold;
     }
 
-    .success h2 {
-      color: #fff;
-      margin-bottom: 10px;
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 30px;
     }
 
-    .success p {
-      color: #aaa;
-      margin-bottom: 20px;
-    }
-
-    .done-btn {
-      background: #222;
-      color: #fff;
-      border: 1px solid #444;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    @media (max-width: 800px) {
+    @media(max-width:800px) {
       .categories {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
       }
 
       .businesses {
@@ -378,28 +292,13 @@
       }
     }
 
-    @media (max-width: 500px) {
-      .owner-btn {
-        font-size: 12px;
-        padding: 8px 10px;
-      }
-
+    @media(max-width:500px) {
       .search {
         flex-direction: column;
-        background: transparent;
-        gap: 10px;
-      }
-
-      .search input {
-        border-radius: 8px;
       }
 
       .search button {
-        padding: 14px;
-      }
-
-      .modal-box {
-        padding: 22px;
+        width: 100%;
       }
     }
   </style>
@@ -408,203 +307,214 @@
 <body>
 
 <header>
-  <div class="container nav">
-    <div class="logo">Book<span>Local</span></div>
+  <div class="nav">
+    <div class="logo">
+      Book<span>Local</span>
+    </div>
 
-    <a href="#business" class="owner-btn">
+    <a href="#business" class="owner">
       List Your Business
     </a>
   </div>
 </header>
 
-<main>
 
-  <section class="hero">
-    <div class="container">
+<section class="hero">
 
-      <h1>
-        Find it.<br>
-        <span>Book it.</span> Done.
-      </h1>
+  <h1>
+    Find it.<br>
+    <span class="gold">Book it.</span> Done.
+  </h1>
 
-      <p>
-        Discover local barbers, salons and beauty professionals
-        and book your next appointment in seconds.
-      </p>
+  <p>
+    Discover local barbers, salons and beauty professionals
+    and book your next appointment in seconds.
+  </p>
 
-      <div class="search">
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Search for a barber, salon or service..."
-        >
+  <div class="search">
+    <input
+      id="search"
+      placeholder="Search businesses..."
+    >
 
-        <button onclick="searchBusinesses()">
-          Search
+    <button onclick="searchBusinesses()">
+      Search
+    </button>
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="container">
+
+    <h2>Browse Services</h2>
+
+    <div class="categories">
+
+      <div class="category">
+        <div class="icon">💈</div>
+        <strong>Barbers</strong>
+      </div>
+
+      <div class="category">
+        <div class="icon">💇</div>
+        <strong>Hair Salons</strong>
+      </div>
+
+      <div class="category">
+        <div class="icon">💅</div>
+        <strong>Nails</strong>
+      </div>
+
+      <div class="category">
+        <div class="icon">✨</div>
+        <strong>Beauty</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="container">
+
+    <h2>Featured Businesses</h2>
+
+    <div class="businesses" id="businessList">
+
+
+      <div class="business">
+
+        <h3>Premium Cuts</h3>
+
+        <p class="location">
+          Durban • Barber
+        </p>
+
+        <p class="rating">
+          ★★★★★ 4.9
+        </p>
+
+        <div class="service">
+          <span>Classic Haircut</span>
+          <strong>R150</strong>
+        </div>
+
+        <div class="service">
+          <span>Haircut + Beard</span>
+          <strong>R200</strong>
+        </div>
+
+        <button
+          class="book"
+          onclick="openBooking('Premium Cuts')">
+
+          Book Now
+
         </button>
-      </div>
-
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-
-      <h2 class="section-title">
-        Browse Services
-      </h2>
-
-      <div class="categories">
-
-        <div class="category" onclick="filterBusinesses('barber')">
-          <div class="category-icon">💈</div>
-          <p>Barbers</p>
-        </div>
-
-        <div class="category" onclick="filterBusinesses('salon')">
-          <div class="category-icon">💇</div>
-          <p>Hair Salons</p>
-        </div>
-
-        <div class="category" onclick="filterBusinesses('nails')">
-          <div class="category-icon">💅</div>
-          <p>Nails</p>
-        </div>
-
-        <div class="category" onclick="filterBusinesses('beauty')">
-          <div class="category-icon">✨</div>
-          <p>Beauty</p>
-        </div>
 
       </div>
 
-    </div>
-  </section>
 
-  <section>
-    <div class="container">
+      <div class="business">
 
-      <h2 class="section-title">
-        Featured Businesses
-      </h2>
+        <h3>Glow Studio</h3>
 
-      <div class="businesses" id="businessList">
+        <p class="location">
+          Durban • Hair & Beauty
+        </p>
 
-        <div class="business" data-category="barber">
+        <p class="rating">
+          ★★★★★ 4.8
+        </p>
 
-          <h3>Premium Cuts</h3>
-
-          <p class="location">
-            Durban • Barber
-          </p>
-
-          <p class="rating">
-            ★★★★★ 4.9
-          </p>
-
-          <div class="service">
-            <span>Classic Haircut</span>
-            <span class="price">R150</span>
-          </div>
-
-          <div class="service">
-            <span>Haircut + Beard</span>
-            <span class="price">R200</span>
-          </div>
-
-          <button
-            class="book-btn"
-            onclick="openBooking('Premium Cuts', 'Classic Haircut', 'R150')">
-            Book Now
-          </button>
-
+        <div class="service">
+          <span>Hair Styling</span>
+          <strong>R180</strong>
         </div>
 
-        <div class="business" data-category="salon">
-
-          <h3>Glow Studio</h3>
-
-          <p class="location">
-            Durban • Hair & Beauty
-          </p>
-
-          <p class="rating">
-            ★★★★★ 4.8
-          </p>
-
-          <div class="service">
-            <span>Hair Styling</span>
-            <span class="price">R180</span>
-          </div>
-
-          <div class="service">
-            <span>Wash & Blow</span>
-            <span class="price">R120</span>
-          </div>
-
-          <button
-            class="book-btn"
-            onclick="openBooking('Glow Studio', 'Hair Styling', 'R180')">
-            Book Now
-          </button>
-
+        <div class="service">
+          <span>Wash & Blow</span>
+          <strong>R120</strong>
         </div>
 
-        <div class="business" data-category="nails">
+        <button
+          class="book"
+          onclick="openBooking('Glow Studio')">
 
-          <h3>Elite Nails</h3>
+          Book Now
 
-          <p class="location">
-            Durban • Nail Technician
-          </p>
+        </button>
 
-          <p class="rating">
-            ★★★★★ 4.9
-          </p>
+      </div>
 
-          <div class="service">
-            <span>Gel Nails</span>
-            <span class="price">R220</span>
-          </div>
 
-          <div class="service">
-            <span>Classic Manicure</span>
-            <span class="price">R120</span>
-          </div>
+      <div class="business">
 
-          <button
-            class="book-btn"
-            onclick="openBooking('Elite Nails', 'Gel Nails', 'R220')">
-            Book Now
-          </button>
+        <h3>Elite Nails</h3>
 
+        <p class="location">
+          Durban • Nail Technician
+        </p>
+
+        <p class="rating">
+          ★★★★★ 4.9
+        </p>
+
+        <div class="service">
+          <span>Gel Nails</span>
+          <strong>R220</strong>
         </div>
+
+        <div class="service">
+          <span>Classic Manicure</span>
+          <strong>R120</strong>
+        </div>
+
+        <button
+          class="book"
+          onclick="openBooking('Elite Nails')">
+
+          Book Now
+
+        </button>
 
       </div>
 
     </div>
-  </section>
 
-  <section class="business-section" id="business">
+  </div>
 
-    <div class="container">
+</section>
 
-      <h2>Own a business?</h2>
 
-      <p>
-        Get discovered by new customers and manage your
-        appointments with BookLocal.
-      </p>
+<section
+  class="business-section"
+  id="business">
 
-      <a href="#" class="business-link">
-        List Your Business
-      </a>
+  <div class="container">
 
-    </div>
+    <h2>Own a business?</h2>
 
-  </section>
+    <p>
+      Get discovered by new customers and manage
+      your appointments with BookLocal.
+    </p>
 
-</main>
+    <a class="owner" href="#">
+      List Your Business
+    </a>
+
+  </div>
+
+</section>
+
 
 <footer>
   © 2026 BookLocal. Find it. Book it. Done.
@@ -613,84 +523,68 @@
 
 <!-- BOOKING MODAL -->
 
-<div class="modal" id="bookingModal">
+<div id="bookingModal">
 
-  <div class="modal-box">
+  <div class="modal">
 
     <button
       class="close"
       onclick="closeBooking()">
+
       ×
+
     </button>
+
 
     <div id="bookingForm">
 
       <h2>
-        Book your appointment
+        Book Appointment
       </h2>
 
-      <p class="modal-business" id="selectedBusiness">
+      <p
+        class="selected"
+        id="selectedBusiness">
       </p>
 
-      <div class="form-group">
 
-        <label>
-          Service
-        </label>
+      <div class="field">
+
+        <label>Service</label>
 
         <select id="service">
 
-          <option>
-            Classic Haircut
-          </option>
-
-          <option>
-            Haircut + Beard
-          </option>
-
-          <option>
-            Hair Styling
-          </option>
-
-          <option>
-            Wash & Blow
-          </option>
-
-          <option>
-            Gel Nails
-          </option>
-
-          <option>
-            Classic Manicure
-          </option>
+          <option>Classic Haircut</option>
+          <option>Haircut + Beard</option>
+          <option>Hair Styling</option>
+          <option>Wash & Blow</option>
+          <option>Gel Nails</option>
+          <option>Classic Manicure</option>
 
         </select>
 
       </div>
 
-      <div class="form-group">
 
-        <label>
-          Date
-        </label>
+      <div class="field">
+
+        <label>Date</label>
 
         <input
-          id="date"
           type="date"
-          required>
+          id="date">
 
       </div>
 
-      <div class="form-group">
 
-        <label>
-          Time
-        </label>
+      <div class="field">
+
+        <label>Time</label>
 
         <select id="time">
 
           <option value="">
-            Select a time
+            Select time
           </option>
 
           <option>09:00</option>
@@ -716,36 +610,32 @@
 
       </div>
 
-      <div class="form-group">
 
-        <label>
-          Your name
-        </label>
+      <div class="field">
+
+        <label>Your name</label>
 
         <input
           id="customerName"
-          type="text"
-          placeholder="Enter your name"
-          required>
+          placeholder="Your name">
 
       </div>
 
-      <div class="form-group">
 
-        <label>
-          Phone number
-        </label>
+      <div class="field">
+
+        <label>Phone number</label>
 
         <input
           id="customerPhone"
           type="tel"
-          placeholder="e.g. 082 123 4567"
-          required>
+          placeholder="082 123 4567">
 
       </div>
 
+
       <button
-        class="confirm-btn"
+        class="confirm"
         onclick="confirmBooking()">
 
         Confirm Booking
@@ -755,9 +645,7 @@
     </div>
 
 
-    <!-- SUCCESS -->
-
-    <div class="success" id="bookingSuccess">
+    <div id="success">
 
       <div class="success-icon">
         ✓
@@ -767,12 +655,11 @@
         Booking Confirmed!
       </h2>
 
-      <p id="confirmationText">
-        Your appointment has been saved.
-      </p>
+      <p id="confirmationText"></p>
 
       <button
-        class="done-btn"
+        class="close"
+        style="position:static;background:#222;border-radius:8px;padding:10px 20px;font-size:14px;"
         onclick="closeBooking()">
 
         Done
@@ -786,340 +673,223 @@
 </div>
 
 
-<script>
+<!-- SUPABASE -->
 
-  let selectedBusiness = "";
-
-  function openBooking(business, service, price) {
-alert("BookLocal is working!");
-
-    selectedBusiness = business;
-
-    document.getElementById("selectedBusiness").textContent =
-      business + " • " + service + " • " + price;
-
-    document.getElementById("service").value = service;
-
-    document.getElementById("bookingModal").classList.add("show");
-
-    document.getElementById("bookingForm").style.display = "block";
-
-    document.getElementById("bookingSuccess").style.display = "none";
-
-  }
-
-
-  function closeBooking() {
-
-    document.getElementById("bookingModal").classList.remove("show");
-
-  }
-
-
- async function confirmBooking() {
-
-
-    const service =
-      document.getElementById("service").value;
-
-    const date =
-      document.getElementById("date").value;
-
-    const time =
-      document.getElementById("time").value;
-
-    const name =
-      document.getElementById("customerName").value.trim();
-
-    const phone =
-      document.getElementById("customerPhone").value.trim();
-
-
-    if (!date || !time || !name || !phone) {
-
-      alert("Please complete all the fields.");
-
-      return;
-
-    }
-
-
-    const booking = {
-
-      business: selectedBusiness,
-
-      service: service,
-
-      date: date,
-
-      time: time,
-
-      customer: name,
-
-      phone: phone,
-
-      createdAt: new Date().toISOString()
-
-    };
-
-
-  const { data, error } = await supabase
-  .from("bookings")
-  .insert([{
-    business: booking.business,
-    service: booking.service,
-    date: booking.date,
-    time: booking.time,
-    customer_name: booking.customer,
-    customer_phone: booking.phone
-  }]);
-
-if (error) {
-  console.error(error);
-  alert("We couldn't save your booking. Please try again.");
-  return;
-}
-
-    );
-
-
-    document.getElementById("bookingForm").style.display =
-      "none";
-
-    document.getElementById("bookingSuccess").style.display =
-      "block";
-
-
-    document.getElementById("confirmationText").textContent =
-      "Your " + service +
-      " at " + selectedBusiness +
-      " is booked for " +
-      date + " at " + time + ".";
-
-  }
-
-
-  function searchBusinesses() {
-
-    const search =
-      document.getElementById("searchInput").value.toLowerCase();
-
-    const businesses =
-      document.querySelectorAll(".business");
-
-
-    businesses.forEach(function(business) {
-
-      const text =
-        business.textContent.toLowerCase();
-
-      if (text.includes(search)) {
-
-        business.style.display = "block";
-
-      } else {
-
-        business.style.display = "none";
-
-      }
-
-    });
-
-  }
-
-
-  function filterBusinesses(category) {
-
-    const businesses =
-      document.querySelectorAll(".business");
-
-
-    businesses.forEach(function(business) {
-
-      if (business.dataset.category === category) {
-
-        business.style.display = "block";
-
-      } else {
-
-        business.style.display = "none";
-
-      }
-
-    });
-
-  }
-
-
-  // Prevent customers from selecting a date in the past
-
-  const dateInput =
-    document.getElementById("date");
-
-  const today =
-    new Date().toISOString().split("T")[0];
-
-  dateInput.min = today;
-
-
-  // Close modal when clicking outside it
-
-  document.getElementById("bookingModal")
-    .addEventListener("click", function(event) {
-
-      if (event.target === this) {
-
-        closeBooking();
-
-      }
-
-    });
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
+  /*
+    IMPORTANT:
+    Put YOUR Supabase details below.
+    Never put your database password or service_role key here.
+  */
+
   const SUPABASE_URL = "https://mwoapnobwiehkfomuxsv.supabase.co/rest/v1/";
+
   const SUPABASE_KEY = "sb_publishable_76afbyVYo6R36CgZsiREYg_3RwPIOIm";
 
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
 
   let selectedBusiness = "";
 
-  function openBooking(business, service, price) {
+
+  function openBooking(business) {
 
     selectedBusiness = business;
 
-    document.getElementById("selectedBusiness").textContent =
-      business + " • " + service + " • " + price;
+    document.getElementById(
+      "selectedBusiness"
+    ).textContent = business;
 
-    document.getElementById("service").value = service;
+    document.getElementById(
+      "bookingModal"
+    ).classList.add("show");
 
-    document.getElementById("bookingModal").classList.add("show");
+    document.getElementById(
+      "bookingForm"
+    ).style.display = "block";
 
-    document.getElementById("bookingForm").style.display = "block";
+    document.getElementById(
+      "success"
+    ).style.display = "none";
 
-    document.getElementById("bookingSuccess").style.display = "none";
   }
+
 
   function closeBooking() {
 
-    document.getElementById("bookingModal").classList.remove("show");
+    document.getElementById(
+      "bookingModal"
+    ).classList.remove("show");
 
   }
+
 
   async function confirmBooking() {
 
     const service =
-      document.getElementById("service").value;
+      document.getElementById(
+        "service"
+      ).value;
 
     const date =
-      document.getElementById("date").value;
+      document.getElementById(
+        "date"
+      ).value;
 
     const time =
-      document.getElementById("time").value;
+      document.getElementById(
+        "time"
+      ).value;
 
     const name =
-      document.getElementById("customerName").value.trim();
+      document.getElementById(
+        "customerName"
+      ).value.trim();
 
     const phone =
-      document.getElementById("customerPhone").value.trim();
+      document.getElementById(
+        "customerPhone"
+      ).value.trim();
+
 
     if (!date || !time || !name || !phone) {
 
-      alert("Please complete all the fields.");
-
-      return;
-    }
-
-    const { error } = await supabaseClient
-      .from("bookings")
-      .insert([{
-        business: selectedBusiness,
-        service: service,
-        date: date,
-        time: time,
-        customer_name: name,
-        customer_phone: phone
-      }]);
-
-    if (error) {
-
-      console.error(error);
-
       alert(
-        "We couldn't save your booking. Please try again."
+        "Please complete all the fields."
       );
 
       return;
+
     }
 
-    document.getElementById("bookingForm").style.display =
-      "none";
 
-    document.getElementById("bookingSuccess").style.display =
-      "block";
+    const { error } =
+      await supabaseClient
+        .from("bookings")
+        .insert([{
 
-    document.getElementById("confirmationText").textContent =
-      "Your " + service +
-      " at " + selectedBusiness +
+          business: selectedBusiness,
+
+          service: service,
+
+          date: date,
+
+          time: time,
+
+          customer_name: name,
+
+          customer_phone: phone
+
+        }]);
+
+
+    if (error) {
+
+      console.error(
+        "Supabase error:",
+        error
+      );
+
+      alert(
+        "Booking could not be saved. Please try again."
+      );
+
+      return;
+
+    }
+
+
+    document.getElementById(
+      "bookingForm"
+    ).style.display = "none";
+
+
+    document.getElementById(
+      "success"
+    ).style.display = "block";
+
+
+    document.getElementById(
+      "confirmationText"
+    ).textContent =
+      "Your appointment at " +
+      selectedBusiness +
       " is booked for " +
-      date + " at " + time + ".";
+      date +
+      " at " +
+      time +
+      ".";
+
   }
+
 
   function searchBusinesses() {
 
     const search =
-      document.getElementById("searchInput").value.toLowerCase();
+      document.getElementById(
+        "search"
+      ).value.toLowerCase();
+
 
     const businesses =
-      document.querySelectorAll(".business");
+      document.querySelectorAll(
+        ".business"
+      );
 
-    businesses.forEach(function(business) {
 
-      const text =
-        business.textContent.toLowerCase();
+    businesses.forEach(
+      function(business) {
 
-      business.style.display =
-        text.includes(search) ? "block" : "none";
+        const text =
+          business.textContent
+            .toLowerCase();
 
-    });
+        business.style.display =
+          text.includes(search)
+            ? "block"
+            : "none";
+
+      }
+    );
+
   }
 
-  function filterBusinesses(category) {
-
-    const businesses =
-      document.querySelectorAll(".business");
-
-    businesses.forEach(function(business) {
-
-      business.style.display =
-        business.dataset.category === category
-          ? "block"
-          : "none";
-
-    });
-  }
 
   const dateInput =
     document.getElementById("date");
 
-  const today =
-    new Date().toISOString().split("T")[0];
+  dateInput.min =
+    new Date()
+      .toISOString()
+      .split("T")[0];
 
-  dateInput.min = today;
 
-  document.getElementById("bookingModal")
-    .addEventListener("click", function(event) {
+  document
+    .getElementById("bookingModal")
+    .addEventListener(
+      "click",
+      function(event) {
 
-      if (event.target === this) {
-        closeBooking();
+        if (
+          event.target === this
+        ) {
+
+          closeBooking();
+
+        }
+
       }
+    );
 
-    });
 </script>
-
 
 </body>
 </html>
