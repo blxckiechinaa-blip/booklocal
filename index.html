@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookLocal — Find it. Book it. Done.</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid #222;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #d4af37;
+    }
+
+    .owner-btn {
+      border: 1px solid #d4af37;
+      color: #d4af37;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 0 55px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 72px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #d4af37;
+    }
+
+    .hero p {
+      color: #aaa;
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 35px;
+    }
+
+    .search {
+      max-width: 650px;
+      margin: auto;
+      display: flex;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 6px;
+    }
+
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 15px;
+      font-size: 16px;
+    }
+
+    .search button {
+      background: #d4af37;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 0 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 45px 0;
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .category {
+      background: #151515;
+      border: 1px solid #252525;
+      padding: 25px 15px;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .category:hover {
+      border-color: #d4af37;
+      transform: translateY(-2px);
+    }
+
+    .category-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .category p {
+      color: #ddd;
+      font-weight: bold;
+    }
+
+    .businesses {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .business {
+      background: #151515;
+      border: 1px solid #252525;
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .business h3 {
+      margin-bottom: 6px;
+      font-size: 21px;
+    }
+
+    .business .location {
+      color: #999;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .rating {
+      color: #d4af37;
+      margin-bottom: 18px;
+    }
+
+    .service {
+      display: flex;
+      justify-content: space-between;
+      padding: 11px 0;
+      border-top: 1px solid #292929;
+      color: #ccc;
+    }
+
+    .price {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .book-btn {
+      display: block;
+      width: 100%;
+      margin-top: 18px;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #d4af37;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .business-section {
+      background: #111;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+      text-align: center;
+    }
+
+    .business-section p {
+      color: #aaa;
+      max-width: 550px;
+      margin: 10px auto 25px;
+    }
+
+    .business-link {
+      display: inline-block;
+      background: #d4af37;
+      color: #000;
+      padding: 13px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .businesses {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 60px 0 40px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .owner-btn {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      .search {
+        flex-direction: column;
+        background: transparent;
+        gap: 10px;
+      }
+
+      .search input {
+        border-radius: 8px;
+      }
+
+      .search button {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">Book<span>Local</span></div>
+      <a href="#business" class="owner-btn">List Your Business</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Find it.<br><span>Book it.</span> Done.</h1>
+
+        <p>
+          Discover local barbers, salons and beauty professionals
+          and book your next appointment in seconds.
+        </p>
+
+        <div class="search">
+          <input
+            type="text"
+            placeholder="Search for a barber, salon or service..."
+          >
+          <button>Search</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <h2 class="section-title">Browse Services</h2>
+
+        <div class="categories">
+
+          <div class="category">
+            <div class="category-icon">💈</div>
+            <p>Barbers</p>
+          </div>
+
+          <div class="category">
+            <div class="category-icon">💇</div>
+            <p>Hair Salons</p>
+          </div>
+
+          <div class="category">
+            <div class="category-icon">💅</div>
+            <p>Nails</p>
+          </div>
+
+          <div class="category">
+            <div class="category-icon">✨</div>
+            <p>Beauty</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <h2 class="section-title">Featured Businesses</h2>
+
+        <div class="businesses">
+
+          <div class="business">
+            <h3>Premium Cuts</h3>
+            <p class="location">Durban • Barber</p>
+            <p class="rating">★★★★★ 4.9</p>
+
+            <div class="service">
+              <span>Classic Haircut</span>
+              <span class="price">R150</span>
+            </div>
+
+            <div class="service">
+              <span>Haircut + Beard</span>
+              <span class="price">R200</span>
+            </div>
+
+            <button class="book-btn">Book Now</button>
+          </div>
+
+          <div class="business">
+            <h3>Glow Studio</h3>
+            <p class="location">Durban • Hair & Beauty</p>
+            <p class="rating">★★★★★ 4.8</p>
+
+            <div class="service">
+              <span>Hair Styling</span>
+              <span class="price">R180</span>
+            </div>
+
+            <div class="service">
+              <span>Wash & Blow</span>
+              <span class="price">R120</span>
+            </div>
+
+            <button class="book-btn">Book Now</button>
+          </div>
+
+          <div class="business">
+            <h3>Elite Nails</h3>
+            <p class="location">Durban • Nail Technician</p>
+            <p class="rating">★★★★★ 4.9</p>
+
+            <div class="service">
+              <span>Gel Nails</span>
+              <span class="price">R220</span>
+            </div>
+
+            <div class="service">
+              <span>Classic Manicure</span>
+              <span class="price">R120</span>
+            </div>
+
+            <button class="book-btn">Book Now</button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="business-section" id="business">
+      <div class="container">
+
+        <h2>Own a business?</h2>
+
+        <p>
+          Get discovered by new customers and manage your appointments
+          with BookLocal.
+        </p>
+
+        <a href="#" class="business-link">
+          List Your Business
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 BookLocal. Find it. Book it. Done.
+  </footer>
+
+</body>
+</html>
