@@ -974,14 +974,151 @@ if (error) {
 
     });
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-const SUPABASE_URL = "https://mwoapnobwiehkfomuxsv.supabase.co/rest/v1/ ";
-const SUPABASE_KEY = "sb_publishable_76afbyVYo6R36CgZsiREYg_3RwPIOIm";
-const supabase = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
 
+<script>
+  const SUPABASE_URL = "https://mwoapnobwiehkfomuxsv.supabase.co/rest/v1/";
+  const SUPABASE_KEY = "sb_publishable_76afbyVYo6R36CgZsiREYg_3RwPIOIm";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  let selectedBusiness = "";
+
+  function openBooking(business, service, price) {
+
+    selectedBusiness = business;
+
+    document.getElementById("selectedBusiness").textContent =
+      business + " • " + service + " • " + price;
+
+    document.getElementById("service").value = service;
+
+    document.getElementById("bookingModal").classList.add("show");
+
+    document.getElementById("bookingForm").style.display = "block";
+
+    document.getElementById("bookingSuccess").style.display = "none";
+  }
+
+  function closeBooking() {
+
+    document.getElementById("bookingModal").classList.remove("show");
+
+  }
+
+  async function confirmBooking() {
+
+    const service =
+      document.getElementById("service").value;
+
+    const date =
+      document.getElementById("date").value;
+
+    const time =
+      document.getElementById("time").value;
+
+    const name =
+      document.getElementById("customerName").value.trim();
+
+    const phone =
+      document.getElementById("customerPhone").value.trim();
+
+    if (!date || !time || !name || !phone) {
+
+      alert("Please complete all the fields.");
+
+      return;
+    }
+
+    const { error } = await supabaseClient
+      .from("bookings")
+      .insert([{
+        business: selectedBusiness,
+        service: service,
+        date: date,
+        time: time,
+        customer_name: name,
+        customer_phone: phone
+      }]);
+
+    if (error) {
+
+      console.error(error);
+
+      alert(
+        "We couldn't save your booking. Please try again."
+      );
+
+      return;
+    }
+
+    document.getElementById("bookingForm").style.display =
+      "none";
+
+    document.getElementById("bookingSuccess").style.display =
+      "block";
+
+    document.getElementById("confirmationText").textContent =
+      "Your " + service +
+      " at " + selectedBusiness +
+      " is booked for " +
+      date + " at " + time + ".";
+  }
+
+  function searchBusinesses() {
+
+    const search =
+      document.getElementById("searchInput").value.toLowerCase();
+
+    const businesses =
+      document.querySelectorAll(".business");
+
+    businesses.forEach(function(business) {
+
+      const text =
+        business.textContent.toLowerCase();
+
+      business.style.display =
+        text.includes(search) ? "block" : "none";
+
+    });
+  }
+
+  function filterBusinesses(category) {
+
+    const businesses =
+      document.querySelectorAll(".business");
+
+    businesses.forEach(function(business) {
+
+      business.style.display =
+        business.dataset.category === category
+          ? "block"
+          : "none";
+
+    });
+  }
+
+  const dateInput =
+    document.getElementById("date");
+
+  const today =
+    new Date().toISOString().split("T")[0];
+
+  dateInput.min = today;
+
+  document.getElementById("bookingModal")
+    .addEventListener("click", function(event) {
+
+      if (event.target === this) {
+        closeBooking();
+      }
+
+    });
 </script>
+
 
 </body>
 </html>
